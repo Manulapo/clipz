@@ -13,7 +13,7 @@ export class ModalComponent {
 
   ngOnInit() {
     // WONT APPLY ANY CSS OVERRIDE TOI MODAL COMPONENT
-    document.body.appendChild(this.el.nativeElement);
+    // document.body.appendChild(this.el.nativeElement);
   }
 
   closeModal() {

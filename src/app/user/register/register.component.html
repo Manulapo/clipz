@@ -1,0 +1,51 @@
+<!-- alert -->
+<app-alert *ngIf="showAlert" [color]="alertColor">
+  {{alertMessage}}
+</app-alert>
+
+<!-- Registration Form -->
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <!-- Name -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Name</label>
+    <app-input [control]="registerForm.controls.name" [type]="'text'" [placeholder]="'Enter Name'"></app-input>
+  </div>
+
+  <!-- Email -->
+  <label class="inline-block mb-2">Email</label>
+  <app-input [control]="registerForm.controls.email" [type]="'email'" [placeholder]="'Enter Email'"></app-input>
+
+  <!-- Age -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Age</label>
+    <app-input [control]="registerForm.controls.age" [type]="'number'" [placeholder]="'How old are you?'"></app-input>
+  </div>
+
+  <!-- Password -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Password</label>
+    <app-input [control]="registerForm.controls.password" [type]="'password'"
+      [placeholder]="'Enter Password'"></app-input>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Confirm Password</label>
+    <app-input [control]="registerForm.controls.confirmPassword" [type]="'password'"
+      [placeholder]="'Confirm Password'"></app-input>
+  </div>
+
+  <!-- Phone Number -->
+  <div class="mb-3">
+    <label class="inline-block mb-2">Phone Number</label>
+    <app-input [control]="registerForm.controls.phoneNumber" [type]="'tel'" [placeholder]="'Enter Phone Number'"
+      [format]="'000 000 0000'"></app-input>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" [disabled]="registerForm.invalid || !inSubmission"
+    class="block w-full text-white py-1.5 px-3 rounded transition bg-blue-400 disabled:bg-blue-400 disabled:opacity-50">
+    Submit
+  </button>
+</form>
