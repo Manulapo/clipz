@@ -1,3 +1,8 @@
+<!-- alert -->
+<app-alert *ngIf="showAlert" [color]="alertColor">
+  {{alertMessage}}
+</app-alert>
+
 <!-- Login Form -->
 <form #loginForm="ngForm" (ngSubmit)="login()">
   <!-- Email -->
@@ -29,7 +34,7 @@
   <button
   type="submit"
   [disabled]="!loginForm.valid"
-  class="block w-full bg-blue-400 text-white py-1.5 px-3 rounded transition disabled:opacity-50">
+  class="block w-full bg-blue-400 text-white py-1.5 px-3 rounded transition disabled:opacity-50" [disabled]="loginForm.invalid || inSubmission">
     Submit
   </button>
 </form>

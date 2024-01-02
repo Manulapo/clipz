@@ -11,11 +11,6 @@ export class ModalComponent {
 
   constructor(public modal: ModalService, public el: ElementRef) {}
 
-  ngOnInit() {
-    // WONT APPLY ANY CSS OVERRIDE TOI MODAL COMPONENT
-    // document.body.appendChild(this.el.nativeElement);
-  }
-
   closeModal() {
     this.modal.toggleModal(this.modalID);
   }
