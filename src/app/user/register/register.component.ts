@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from '../../services/auth.service';
 import { IUser } from '../../services/models/user.model';
+import { RegisterValidators } from '../validators/register-validators';
+import { EmailTaken } from '../validators/email-taken';
 
 @Component({
   selector: 'app-register',
@@ -11,30 +11,47 @@ import { IUser } from '../../services/models/user.model';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private emailTaken: EmailTaken) {}
 
-  registerForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    email: new FormControl('', [Validators.email]),
-    age: new FormControl<number | null>(null, [
-      Validators.min(18),
-      Validators.max(120),
-    ]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.pattern(
-        '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-      ),
-    ]),
-    confirmPassword: new FormControl('', [Validators.required]),
-    phoneNumber: new FormControl('', [Validators.required]),
-  });
+  name = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  email = new FormControl(
+    '',
+    [Validators.required, Validators.email],
+    [this.emailTaken.validate]
+  );
+  age = new FormControl<number | null>(null, [
+    Validators.required,
+    Validators.min(18),
+    Validators.max(120),
+  ]);
+  password = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
+  ]);
+  confirmPassword = new FormControl('', [Validators.required]);
+  phoneNumber = new FormControl('', [
+    Validators.required,
+    Validators.minLength(13),
+    Validators.maxLength(13),
+  ]);
+
+  registerForm = new FormGroup(
+    {
+      name: this.name,
+      email: this.email,
+      age: this.age,
+      password: this.password,
+      confirmPassword: this.confirmPassword,
+      phoneNumber: this.phoneNumber,
+    },
+    [RegisterValidators.match('password', 'confirmPassword')]
+  );
 
   showAlert: boolean = false;
+  inSubmission: boolean = true;
+
   alertMessage: string = 'Please Wait! your account is being created';
   alertColor = 'blue';
-
-  inSubmission: boolean = true;
 
   async register() {
     this.showAlert = true;
