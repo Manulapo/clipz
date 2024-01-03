@@ -11,5 +11,6 @@ export class InputComponent {
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
   @Input() format: string = '';
+  @Input() value: string | undefined = '';
 
 }
