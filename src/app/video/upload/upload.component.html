@@ -4,14 +4,17 @@
     <div class="font-bold mb-6">Upload Video</div>
 
     <!-- Upload Dropbox -->
-    <div *ngIf="!isFileValid; else uploadFormCtr" app-event-blocker (dragend)="isDragOver = false"
-      (dragenter)="isDragOver = true" (dragover)="isDragOver = true" (dragleave)="isDragOver = false"
-      (mouseleave)="isDragOver = false" (drop)="storeFile($event)"
-      [ngClass]="{'bg-indigo-400 border-indigo-400 border-solid': isDragOver}" class="w-full px-10 py-40 rounded text-center cursor-pointer border border-dashed
-    border-gray-400 transition duration-500 hover:text-white
-    hover:bg-indigo-400 hover:border-indigo-400 hover:border-solid text-xl">
-      <h5 class="font-bold text-center uppercase">Drop your MP4 Here!</h5>
-    </div>
+    <ng-container>
+      <div *ngIf="!isFileValid; else uploadFormCtr" app-event-blocker (dragend)="isDragOver = false"
+        (dragenter)="isDragOver = true" (dragover)="isDragOver = true" (dragleave)="isDragOver = false"
+        (mouseleave)="isDragOver = false" (drop)="storeFile($event)"
+        [ngClass]="{'bg-indigo-400 border-indigo-400 border-solid': isDragOver}" class="w-full px-10 py-40 rounded text-center cursor-pointer border border-dashed
+      border-gray-400 transition duration-500 hover:text-white
+      hover:bg-indigo-400 hover:border-indigo-400 hover:border-solid text-xl">
+        <h5 class="font-bold text-center uppercase">Drop your MP4 Here!</h5>
+        <input class="py-3" type="file"(change)="storeFile($event)">
+      </div>
+    </ng-container>
 
     <!-- Video Editor -->
     <ng-template #uploadFormCtr>
@@ -20,6 +23,7 @@
         <p>{{alertMessage}}</p>
         <p *ngIf="showPercentage">{{percentage | percent}}</p>
       </app-alert>
+
       <!-- Form -->
       <form [formGroup]="uploadForm" (ngSubmit)="uploadFile()">
         <!-- Screenshots -->
