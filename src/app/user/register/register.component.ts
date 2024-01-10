@@ -17,7 +17,7 @@ export class RegisterComponent {
   email = new FormControl(
     '',
     [Validators.required, Validators.email],
-    // [this.emailTaken.validate]
+    [this.emailTaken.validate]
   );
   age = new FormControl<number | null>(null, [
     Validators.required,
@@ -32,7 +32,7 @@ export class RegisterComponent {
   phoneNumber = new FormControl('', [
     Validators.required,
     Validators.minLength(10),
-    Validators.maxLength(10),
+    Validators.maxLength(13),
   ]);
 
   registerForm = new FormGroup(
@@ -48,7 +48,7 @@ export class RegisterComponent {
   );
 
   showAlert: boolean = false;
-  inSubmission: boolean = true;
+  inSubmission: boolean = false;
 
   alertMessage: string = 'Please Wait! your account is being created';
   alertColor = 'blue';
