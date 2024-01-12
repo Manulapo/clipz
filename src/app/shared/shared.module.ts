@@ -29,7 +29,7 @@ import { EventblockerDirective } from './directives/eventblocker.directive';
     TabComponent,
     InputComponent,
     AlertComponent,
-    EventblockerDirective
+    EventblockerDirective,
   ],
   providers: [provideEnvironmentNgxMask()],
 })

@@ -14,10 +14,11 @@ import { RegisterComponent } from './register/register.component';
     AuthModalComponent,
     LoginComponent,
     RegisterComponent,
+
   ],
   imports: [
-    CommonModule,
     SharedModule,
+    CommonModule,
     ReactiveFormsModule,
     FormsModule
   ],
