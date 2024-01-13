@@ -3,9 +3,29 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  font-family: 'Poppins', sans-serif;
+}
 
 body {
-  background-color: #161d31;
+  background-color: #ffffff;
+}
+
+a{
+  color: #333;
+}
+
+.primary{
+  color: #C264F4
+}
+
+.primary-btn{
+  background-color: #C264F4;
+  color: #fff;
+  border-radius: 30px;
+  padding: .3em 1em;
+  font-weight: 600;
+
 }
 
 .material-icons.text-base {
@@ -13,7 +33,7 @@ body {
 }
 
 .bg-secondary {
-  background-color: #283046;
+  background-color: #ffffff;
 }
 
 .bg-gradient {
@@ -123,6 +143,10 @@ body {
   border-radius: 100%;
   -webkit-animation: shadow 1.5s ease-in-out alternate infinite;
           animation: shadow 1.5s ease-in-out alternate infinite;
+}
+
+p{
+  color: #666666;
 }
 
 @-webkit-keyframes shadow {

@@ -1,0 +1,40 @@
+.hero {
+  .hero-text {
+    width: 45%;
+    position: absolute;
+    left: 10%;
+
+    h1 {
+      text-align: start;
+      color: #222;
+    }
+
+    .text {
+      margin-left: 5%;
+
+      p {
+        text-align: start;
+
+        span {
+          font-weight: 500;
+          color: #c264f4;
+          font-size: 24px;
+        }
+      }
+
+      button{
+        margin-top: .5em;
+        transition: all linear .3s;
+
+        &:hover{
+          background-color: #984cc0;
+        }
+      }
+    }
+  }
+
+  .hero-img {
+    width: 60%;
+    margin-left: auto;
+  }
+}

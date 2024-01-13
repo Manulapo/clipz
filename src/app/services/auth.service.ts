@@ -24,13 +24,11 @@ export class AuthService {
   private usersCollection: AngularFirestoreCollection<IUser>;
   public isAuthenticated$: Observable<boolean>;
   public isAuthenticatedWithDelay$: Observable<boolean>;
+  public user$: BehaviorSubject<IUser | undefined> = new BehaviorSubject<
+    IUser | undefined
+  >(undefined);
   public redirect: boolean = false;
   public user: IUser | undefined = undefined;
-
-  // Observable for user information
-  private userInfoSubject = new BehaviorSubject<IUser | undefined>(undefined);
-  public userInfo$: Observable<IUser | undefined> =
-    this.userInfoSubject.asObservable();
 
   constructor(
     private auth: AngularFireAuth,
@@ -68,9 +66,9 @@ export class AuthService {
           phoneNumber: user.phoneNumber,
         } as IUser;
         this.user = userInfo;
-        this.userInfoSubject.next(userInfo);
+        this.user$.next(userInfo);
       } else {
-        this.userInfoSubject.next(undefined);
+        this.user$.next(undefined);
       }
     });
   }

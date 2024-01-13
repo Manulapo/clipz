@@ -5,7 +5,7 @@ import { ModalService } from '../../services/modal.service';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.scss',
+  styleUrls: ['./nav.component.scss'], // Fix the typo in styleUrls
 })
 export class NavComponent {
   constructor(

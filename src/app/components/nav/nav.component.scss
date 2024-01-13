@@ -1,0 +1,19 @@
+nav {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  color: #333;
+
+  .logo {
+    span {
+      color: #c264f4;
+    }
+  }
+}
+
+nav > div,
+nav > div ul {
+  display: flex;
+  font-weight: 500;
+  font-size: 1em;
+}

@@ -2,7 +2,7 @@
 <header id="header" class="bg-secondary">
   <nav class="container mx-auto flex justify-start items-center py-8 px-4">
     <!-- App Name -->
-    <a class="text-3xl text-indigo-400 font-bold uppercase mr-4" routerLink="/">Clipz</a>
+    <a class="logo text-3xl font-bold mr-4" routerLink="/">CLIP<span>z</span></a>
 
     <div class="flex flex-grow items-center">
       <!-- Primary Navigation -->
@@ -13,25 +13,26 @@
         </li>
         <ng-template #authLinks>
           <li>
-            <a class="px-2" routerLink="/manage" routerLinkActive="text-indigo-400"
-              [routerLinkActiveOptions]="{exact: true}" [queryParams]="{ sort: '1' }">Manage</a>
+            <a class="px-2" routerLink="/manage" routerLinkActive="primary"
+              [routerLinkActiveOptions]="{exact: true}" [queryParams]="{ sort: '1' }">Manage Clips</a>
           </li>
           <li>
-            <a class="px-2" routerLink="/upload" routerLinkActive="text-indigo-400"
+            <a class="px-2" routerLink="/upload" routerLinkActive="primary"
               [routerLinkActiveOptions]="{exact: true}">Upload</a>
           </li>
         </ng-template>
         <li>
-          <a class="px-2" routerLink="/about" routerLinkActive="text-indigo-400">About</a>
-        </li>
-        <li *ngIf="auth.isAuthenticated$ | async;">
-          <a class="px-2 text-red-400" routerLink="/" (click)="auth.logOut($event)">LogOut</a>
+          <a class="px-2" routerLink="/about" routerLinkActive="primary">About</a>
         </li>
       </ul>
 
       <ul ul class="flex flex-row ml-auto">
-        <a href="">{{auth.user?.name}}</a>
+        <li *ngIf="(auth.user$ | async)?.name">
+          <span>Welcome, {{ (auth.user$ | async)?.name }}</span>
+          <a class="px-2 text-red-400" routerLink="/" (click)="auth.logOut($event)">LogOut</a>
+        </li>
       </ul>
+
 
       <!-- Language Switcher -->
       <!-- <ul class="flex flex-row ml-auto">
@@ -52,4 +53,6 @@
           </a>
         </li>
       </ul> -->
-
+    </div>
+  </nav>
+</header>
