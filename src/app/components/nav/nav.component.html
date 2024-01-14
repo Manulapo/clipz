@@ -13,8 +13,8 @@
         </li>
         <ng-template #authLinks>
           <li>
-            <a class="px-2" routerLink="/manage" routerLinkActive="primary"
-              [routerLinkActiveOptions]="{exact: true}" [queryParams]="{ sort: '1' }">Manage Clips</a>
+            <a class="px-2" routerLink="/manage" routerLinkActive="primary" [routerLinkActiveOptions]="{exact: true}"
+              [queryParams]="{ sort: '1' }">Manage Clips</a>
           </li>
           <li>
             <a class="px-2" routerLink="/upload" routerLinkActive="primary"
@@ -27,9 +27,21 @@
       </ul>
 
       <ul ul class="flex flex-row ml-auto">
-        <li *ngIf="(auth.user$ | async)?.name">
-          <span>Welcome, {{ (auth.user$ | async)?.name }}</span>
-          <a class="px-2 text-red-400" routerLink="/" (click)="auth.logOut($event)">LogOut</a>
+        <li *ngIf="(auth.user$ | async)?.name" class="nav-user">
+          <img src="{{(auth.user$ | async)?.profileImage ?? '../../../../../assets/img/user.png'}}" alt="">
+          <span>
+            <app-menu [menuText]="(auth.user$ | async)!.name" menuContentSelector='menu'>
+
+            </app-menu>
+            <app-menu [menuText]="(auth.user$ | async)!.name">
+                <div class="log-out">
+                  <a class="px-2 text-red-400" routerLink="/" (click)="auth.logOut($event)"> <mat-icon
+                      class="text-red-400" aria-hidden="false" aria-label="" fontIcon="logout"></mat-icon>Log Out</a>
+              </div>
+            </app-menu>
+
+
+          </span>
         </li>
       </ul>
 

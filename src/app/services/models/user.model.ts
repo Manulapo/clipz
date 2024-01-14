@@ -4,4 +4,5 @@ export interface IUser {
   password?: string,
   phoneNumber: string,
   age: number,
+  profileImage?: string
 }

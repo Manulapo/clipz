@@ -17,3 +17,19 @@ nav > div ul {
   font-weight: 500;
   font-size: 1em;
 }
+
+.nav-user{
+  display: flex;
+  gap: .5em;
+  align-items: center;
+
+  img{
+    width: 35px;
+  }
+
+  .log-out a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

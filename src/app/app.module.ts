@@ -1,3 +1,4 @@
+import { angularMaterial } from './angular-material-icons.module';
 import { NgModule } from '@angular/core';
 import {
   BrowserModule,
@@ -20,6 +21,8 @@ import { ClipComponent } from './clip/clip.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ClipsListComponent } from './components/clips-list/clips-list.component';
 import { FbTimestampsPipe } from './pipes/fb-timestamps.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -31,15 +34,18 @@ import { FbTimestampsPipe } from './pipes/fb-timestamps.pipe';
     NotFoundComponent,
     ClipsListComponent,
     FbTimestampsPipe,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     UserModule,
+    ...angularMaterial,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AppRoutingModule,
     AngularFireStorageModule,
+    BrowserAnimationsModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
