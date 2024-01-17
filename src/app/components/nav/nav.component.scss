@@ -47,12 +47,13 @@ nav > div ul {
 }
 
 .menuWrapper{
-  width: auto;
+  width: max-content;
   position: absolute;
-  bottom: -20%;
+  top: 100%;
+  left: -50%;
   background-color: #fff;
   padding: 1em;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
 

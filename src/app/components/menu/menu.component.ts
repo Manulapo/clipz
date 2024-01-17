@@ -1,25 +1,29 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  encapsulation: ViewEncapsulation.None, // Set to None for global styles
 })
-export class MenuComponent {
-  constructor(public menu: MenuService){}
+export class MenuComponent implements OnInit {
+  @Input() menuText!: string;
+  isMenuOpen: boolean = false;
 
-  @Input() menuText = '';
-  @Input() menuContentSelector = '';
-  @Input() menuID = '';
-  menuOpened: boolean = false;
+  constructor(private menuService: MenuService) {
+    this.menuService.isMenuOpen$.subscribe((isOpen) => {
+      this.isMenuOpen = isOpen;
+    });
+  }
 
-  openMenu() {
-    this.menuOpened = !this.menuOpened;
+  ngOnInit() {}
+
+  toggleMenu() {
+    this.menuService.toggleMenu();
   }
 
   closeMenu() {
-    this.menu.toggleMenu(this.menuID);
+    this.menuService.closeMenu();
   }
+
 }

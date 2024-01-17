@@ -28,11 +28,12 @@
 
       <ul ul class="flex flex-row ml-auto">
         <li *ngIf="(auth.user$ | async)?.name" class="nav-user">
-          <img src="{{(auth.user$ | async)?.profileImage ?? '../../../../../assets/img/user.png'}}" alt="">
+          <img (click)="toggleMenuFromParent()" src="{{(auth.user$ | async)?.profileImage ?? '../../../../../assets/img/user.png'}}" alt="">
           <span>
-            <app-menu [menuText]="(auth.user$ | async)!.name" [menuID]="'accountMenu'">
+            <app-menu appClickedOutside (clickedOutside)="_clickedOutside($event)" [menuText]="(auth.user$ | async)!.name">
               <div class="menuWrapper">
-                <div class="log-out menuOption">
+                <p>Menu</p>
+                <div class="log-out">
                   <a class="px-2 text-red-400" routerLink="/" (click)="auth.logOut($event)">
                     <mat-icon class="text-red-400" aria-hidden="false" aria-label="" fontIcon="logout">
                     </mat-icon>

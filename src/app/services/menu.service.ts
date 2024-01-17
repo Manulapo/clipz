@@ -1,32 +1,18 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MenuService {
-  private menus: any = [];
+  private isMenuOpenSubject = new BehaviorSubject<boolean>(false);
+  isMenuOpen$ = this.isMenuOpenSubject.asObservable();
 
-  constructor() {}
-
-  register(id: string) {
-    this.menus.push({
-      id,
-      visible: false,
-    });
+  toggleMenu() {
+    this.isMenuOpenSubject.next(!this.isMenuOpenSubject.value);
   }
 
-  unRegister(id: string) {
-    this.menus = this.menus.filter((el:any) => el.id !== id);
-  }
-
-  isMenuVisible(id: string): boolean {
-    return !!this.menus.find((el:any) => el.id === id)?.visible;
-  }
-
-  toggleMenu(id: string) {
-    const modal = this.menus.find((el:any) => el.id === id);
-    if (modal) {
-      modal.visible = !modal.visible;
-    }
+  closeMenu() {
+    this.isMenuOpenSubject.next(false);
   }
 }

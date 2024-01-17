@@ -1,6 +1,7 @@
 import { AuthService } from './../../services/auth.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,11 @@ import { ModalService } from '../../services/modal.service';
 export class NavComponent {
   @ViewChild('nav') navbar!: ElementRef;
 
-  constructor(public modal: ModalService, public auth: AuthService) {}
+  constructor(
+    public modal: ModalService,
+    public auth: AuthService,
+    private menuService: MenuService
+  ) {}
 
   isNavbarScrolled: boolean = true;
 
@@ -29,9 +34,17 @@ export class NavComponent {
     return false;
   }
 
+  toggleMenuFromParent() {
+    this.menuService.toggleMenu();
+  }
+
+  _clickedOutside(ev: Event) {
+    console.log(ev);
+  }
+
   handleScroll = () => {
     // handle scroll event
-    const { scrollTop, offsetHeight } = document.documentElement;
+    const { scrollTop } = document.documentElement;
     const compHeight = this.navbar.nativeElement.offsetHeight;
     this.isNavbarScrolled = scrollTop > compHeight;
   };

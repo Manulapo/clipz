@@ -1,8 +1,4 @@
-<!-- app-menu.component.html -->
-
-<div class="menu" (click)="openMenu()">
-  {{ menuText }}
-  <ng-container *ngIf="menu.isMenuVisible(menuID)" [ngClass]="{'opened': menuOpened}">
-    <ng-content></ng-content>
-  </ng-container>
+<button (click)="toggleMenu()">{{menuText}}</button>
+<div *ngIf="isMenuOpen" class="custom-menu">
+  <ng-content></ng-content>
 </div>
