@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { ManageComponent } from './video/manage/manage.component';
-import { ClipComponent } from './clip/clip.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { ClipComponent } from './components/clip/clip.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClipService } from './services/clip.service';
 
 const routes: Routes = [

@@ -1,0 +1,8 @@
+<!-- app-menu.component.html -->
+
+<div class="menu" (click)="openMenu()">
+  {{ menuText }}
+  <ng-container *ngIf="menu.isMenuVisible(menuID)" [ngClass]="{'opened': menuOpened}">
+    <ng-content></ng-content>
+  </ng-container>
+</div>

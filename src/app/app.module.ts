@@ -17,12 +17,12 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { VideoModule } from './video/video.module';
-import { ClipComponent } from './clip/clip.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { ClipComponent } from './components/clip/clip.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClipsListComponent } from './components/clips-list/clips-list.component';
 import { FbTimestampsPipe } from './pipes/fb-timestamps.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [

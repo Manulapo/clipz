@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-modal',
@@ -9,7 +10,7 @@ import { ModalService } from '../../services/modal.service';
 export class ModalComponent {
   @Input() modalID!: string;
 
-  constructor(public modal: ModalService, public el: ElementRef) {}
+  constructor(public modal: ModalService,public el: ElementRef) {}
 
   closeModal() {
     this.modal.toggleModal(this.modalID);

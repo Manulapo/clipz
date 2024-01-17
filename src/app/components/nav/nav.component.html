@@ -1,6 +1,6 @@
 <!-- Header -->
-<header id="header" class="bg-secondary">
-  <nav class="container mx-auto flex justify-start items-center py-8 px-4">
+<header id="header" class="bg-secondary" [ngClass]="{'nav-sticky': isNavbarScrolled}">
+  <nav class="container mx-auto flex justify-start items-center py-4 px-4" #nav>
     <!-- App Name -->
     <a class="logo text-3xl font-bold mr-4" routerLink="/">CLIP<span>z</span></a>
 
@@ -30,13 +30,15 @@
         <li *ngIf="(auth.user$ | async)?.name" class="nav-user">
           <img src="{{(auth.user$ | async)?.profileImage ?? '../../../../../assets/img/user.png'}}" alt="">
           <span>
-            <app-menu [menuText]="(auth.user$ | async)!.name" menuContentSelector='menu'>
-
-            </app-menu>
-            <app-menu [menuText]="(auth.user$ | async)!.name">
-                <div class="log-out">
-                  <a class="px-2 text-red-400" routerLink="/" (click)="auth.logOut($event)"> <mat-icon
-                      class="text-red-400" aria-hidden="false" aria-label="" fontIcon="logout"></mat-icon>Log Out</a>
+            <app-menu [menuText]="(auth.user$ | async)!.name" [menuID]="'accountMenu'">
+              <div class="menuWrapper">
+                <div class="log-out menuOption">
+                  <a class="px-2 text-red-400" routerLink="/" (click)="auth.logOut($event)">
+                    <mat-icon class="text-red-400" aria-hidden="false" aria-label="" fontIcon="logout">
+                    </mat-icon>
+                    Log Out
+                  </a>
+                </div>
               </div>
             </app-menu>
 

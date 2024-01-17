@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import videojs from 'video.js';
-import { Iclip } from '../services/models/clips.model';
+import { Iclip } from '../../services/models/clips.model';
 import { DatePipe } from '@angular/common';
 import Player from "video.js/dist/types/player";
 
