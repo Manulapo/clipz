@@ -23,6 +23,7 @@ import { ClipsListComponent } from './components/clips-list/clips-list.component
 import { FbTimestampsPipe } from './pipes/fb-timestamps.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './components/menu/menu.component';
+import { ClickedOutsideDirective } from './directives/clicked-outside.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MenuComponent } from './components/menu/menu.component';
     NotFoundComponent,
     ClipsListComponent,
     FbTimestampsPipe,
-    MenuComponent
+    MenuComponent,
+    ClickedOutsideDirective
   ],
   imports: [
     BrowserModule,

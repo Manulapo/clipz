@@ -39,7 +39,7 @@ export class NavComponent {
   }
 
   _clickedOutside(ev: Event) {
-    console.log(ev);
+    this.menuService.toggleMenu();
   }
 
   handleScroll = () => {
