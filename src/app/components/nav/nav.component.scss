@@ -7,7 +7,8 @@ header {
   z-index: 999;
 
   &.nav-sticky {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
   }
 }
 
@@ -46,7 +47,7 @@ nav > div ul {
   }
 }
 
-.menuWrapper{
+.menuWrapper {
   width: max-content;
   position: absolute;
   top: 100%;
@@ -56,5 +57,3 @@ nav > div ul {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
-
-

@@ -10,12 +10,15 @@ import { MenuService } from '../../services/menu.service';
 })
 export class NavComponent {
   @ViewChild('nav') navbar!: ElementRef;
+  isMenuOpen: any;
 
   constructor(
     public modal: ModalService,
     public auth: AuthService,
     private menuService: MenuService
-  ) {}
+  ) {
+    this.menuService.isMenuOpen$.subscribe(value => this.isMenuOpen = value);
+  }
 
   isNavbarScrolled: boolean = true;
 
@@ -39,7 +42,9 @@ export class NavComponent {
   }
 
   _clickedOutside(ev: Event) {
-    this.menuService.toggleMenu();
+    if(this.isMenuOpen){
+      this.menuService.toggleMenu();
+    }
   }
 
   handleScroll = () => {
